@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from transmission_rpc import Client
 from dotenv import load_dotenv
 import os
+import ast
 
 load_dotenv()
 
@@ -38,8 +39,10 @@ class MagnetLink(BaseModel):
 
 @app.post("/add")
 async def add(magnetlink: MagnetLink):
-    url = magnetlink.url
-    res = torrentClient.add_torrent(url)
-    print(res)
-
-    return "success"
+    try:
+        url = magnetlink.url
+        res = torrentClient.add_torrent(url)
+        return res.name
+    except Exception as error:
+        print(str(error))
+        return str(error)
