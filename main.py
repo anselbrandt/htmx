@@ -6,7 +6,6 @@ from pydantic import BaseModel
 from transmission_rpc import Client
 from dotenv import load_dotenv
 import os
-import ast
 
 load_dotenv()
 
