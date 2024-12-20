@@ -18,7 +18,7 @@ app = FastAPI(root_path=rootPath)
 
 templates = Jinja2Templates(directory="templates")
 
-c = Client(
+torrentClient = Client(
     host="raspberrypi.anselbrandt.net",
     port=9091,
     username=TRANSMISSION_USERNAME,
@@ -37,9 +37,9 @@ class MagnetLink(BaseModel):
 
 
 @app.post("/add")
-async def magnet(magnetlink: MagnetLink):
+async def add(magnetlink: MagnetLink):
     url = magnetlink.url
-    res = c.add_torrent(url)
+    res = torrentClient.add_torrent(url)
     print(res)
 
     return "success"
