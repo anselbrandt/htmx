@@ -16,3 +16,9 @@ curl -H 'Content-Type: application/json' \
       -X POST \
       https://air.anselbrandt.net/api/add
 ```
+
+### Transmission RPC Specification
+
+https://github.com/transmission/transmission/blob/main/docs/rpc-spec.md
+
+https://transmission-rpc.readthedocs.io/en/v7.0.11/client.html
